@@ -48,7 +48,7 @@ PostForm.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => {

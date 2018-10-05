@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
           ...state,
           item: {
               ...state.item,
-            [action.payload.name]: [action.payload.value]
+            [action.payload.name]: action.payload.value
           }
       };
     // case NEW_POST:
