@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createPost } from '../actions/postActions';
+import { addPost, createPost } from '../actions/postActions';
 
 class PostForm extends React.Component {
-  state={
-    title: '',
-    body: '',
-  };
-
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.props.createPost({name: e.target.name, value: e.target.value });
   };
 
  handleSubmit = async (e, title, body) => {
@@ -19,11 +14,11 @@ class PostForm extends React.Component {
       title,
       body,
     };
-    this.props.createPost(post);
+    this.props.addPost(post);
   };
 
   render() {
-    const { title, body } = this.state;
+    const { title, body } = this.props.post;
 
     return (
       <div>
@@ -48,7 +43,19 @@ class PostForm extends React.Component {
 }
 
 PostForm.propTypes = {
+  addPost: PropTypes.func.isRequired,
   createPost: PropTypes.func.isRequired,
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }),
 };
 
-export default connect(null, { createPost })(PostForm);
+const mapStateToProps = (state) => {
+  const { posts } = state;
+  return {
+    post: posts.item,
+  };
+};
+
+export default connect(mapStateToProps, { addPost, createPost })(PostForm);

@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST } from './types';
+import { FETCH_POSTS, NEW_POST, CREATE_POST } from './types';
 
 export const fetchPosts = () => {
   return async (dispatch) => {
@@ -11,7 +11,7 @@ export const fetchPosts = () => {
   };
 };
 
-export const createPost = (post) => {
+export const addPost = (post) => {
   return async (dispatch) => {
     const config = {
       method: 'POST',
@@ -27,4 +27,8 @@ export const createPost = (post) => {
       payload: response,
     });
   };
+};
+
+export const createPost = (post) => {
+  return { type: CREATE_POST, payload: post };
 };
