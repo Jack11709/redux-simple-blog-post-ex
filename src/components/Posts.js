@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchPosts } from '../actions/postActions';
 
-class Posts extends React.Component {
-  componentDidMount() {
-    this.props.fetchPosts();
-  }
-
-  render() {
-    const { posts } = this.props;
+const Posts = (props) => {
+    const { posts } = props;
     return (
       <div>
         {posts.map(post => (
@@ -20,19 +13,10 @@ class Posts extends React.Component {
         ))}
       </div>
     );
-  }
-}
+};
 
 Posts.propTypes = {
-  fetchPosts: PropTypes.func.isRequired,
   posts: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const { posts } = state;
-  return {
-    posts: posts.items,
-  };
-};
-
-export default connect(mapStateToProps, { fetchPosts })(Posts);
+export default Posts;

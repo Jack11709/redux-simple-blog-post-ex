@@ -23,11 +23,14 @@ export default function (state = initialState, action) {
             [action.payload.name]: action.payload.value
           }
       };
-    // case NEW_POST:
-    //   return {
-    //       ...state,
-    //     item: action.payload,
-    //   };
+    case types.NEW_POST:
+      return {
+        ...state,
+        items: [
+          ...state.items,
+          action.payload
+        ]
+      };
     default:
       return state;
   }

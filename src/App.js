@@ -1,17 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import Posts from './components/Posts';
-import PostForm from './components/PostForm';
+import PostsContainer from './containers/PostsContainer';
 import './App.css';
 
 const App = () => {
     return (
       <Provider store={store}>
         <div className="App">
-          <PostForm />
-          <hr />
-          <Posts />
+          <PostsContainer />
         </div>
       </Provider>
     );
