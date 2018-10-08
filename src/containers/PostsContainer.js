@@ -55,4 +55,9 @@ const mapStateToProps = (state) => {
   };
 };
 
+// map dispatch to props example
+// const mapDispatchToProps = dispatch => ({
+//   fetchPosts: () => dispatch(fetchPosts())
+// });
+
 export default connect(mapStateToProps, { fetchPosts, addPost, createPost })(PostContainer);
